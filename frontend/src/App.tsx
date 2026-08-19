@@ -34,7 +34,16 @@ export default function App() {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    setAuth(btoa(`${username}:${password}`));
+    if (username === 'admin' && password === 'admin123') {
+      setAuth(btoa(`${username}:${password}`));
+    }
+    else if (username === 'user' && password === 'user123') {
+      setAuth(btoa(`${username}:${password}`));
+    }
+    else {
+      alert("Invalid username or password!");
+      setPassword('');
+    }
   };
 
   const handleLogout = () => {
