@@ -118,10 +118,41 @@ export default function App() {
             />
             <button type="submit">Login</button>
           </form>
+
+
+    <h3>Current Inventory</h3>
+    <div>
+      <table>
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>Quantity</th>
+          <th>Min Threshold</th>
+          <th>Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        {items.map((item) => (
+            <tr key={item.id} style={{ backgroundColor: item.lowStock ? '#8B0000' : 'transparent' }}>
+              <td>{item.name}</td>
+              <td>{item.quantity}</td>
+              <td>{item.minThreshold}</td>
+              <td>
+                {item.lowStock ? 'Low Stock' : 'In Stock'}
+              </td>
+            </tr>
+        ))}
+        {items.length === 0 && (
+            <tr>
+              <td colSpan={5}>No items found in pantry.</td>
+            </tr>
+        )}
+        </tbody>
+      </table>
+    </div>
         </div>
     );
-  }
-
+        }
   return (
       <div>
         <div>
@@ -185,4 +216,4 @@ export default function App() {
         </table>
       </div>
   );
-}
+          }
