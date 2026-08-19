@@ -160,7 +160,7 @@ export default function App() {
           </thead>
           <tbody>
           {items.map((item) => (
-              <tr key={item.id}>
+              <tr key={item.id} style={{ backgroundColor: item.lowStock ? '#8B0000' : 'transparent' }}>
                 <td>{item.name}</td>
                 <td>{item.quantity}</td>
                 <td>{item.minThreshold}</td>
