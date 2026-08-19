@@ -119,7 +119,7 @@ export default function App() {
           <h1>Smart Pantry Dashboard</h1>
           <button onClick={handleLogout}>Logout</button>
         </div>
-
+        {auth && username === 'admin' &&
         <form onSubmit={handleAddItem}>
           <h3>Add New Pantry Item</h3>
           <input
@@ -136,6 +136,7 @@ export default function App() {
           />
           <button type="submit">Add Item</button>
         </form>
+        }
 
         <h3>Current Inventory</h3>
         <table>
@@ -145,7 +146,7 @@ export default function App() {
             <th>Quantity</th>
             <th>Min Threshold</th>
             <th>Status</th>
-            <th>Actions</th>
+            {auth && username === 'admin' && <th>Actions</th>}
           </tr>
           </thead>
           <tbody>
@@ -158,10 +159,11 @@ export default function App() {
                   {item.lowStock ? 'Low Stock' : 'In Stock'}
                 </td>
                 <td>
-                  <button
+                  {auth && username === 'admin' && <button
                       onClick={() => handleRestock(item.id)}>
                     Restock
                   </button>
+                  }
                 </td>
               </tr>
           ))}
