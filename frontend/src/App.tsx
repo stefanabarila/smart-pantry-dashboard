@@ -9,6 +9,10 @@ interface InventoryItem {
 }
 
 export default function App() {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [auth, setAuth] = useState<string | null>(null);
+
   const [items, setItems] = useState<InventoryItem[]>([]);
   const [name, setName] = useState('');
   const [quantity, setQuantity] = useState('');
@@ -28,6 +32,17 @@ export default function App() {
     fetchItems();
   }, []);
 
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    setAuth(btoa(`${username}:${password}`));
+  };
+
+  const handleLogout = () => {
+    setAuth(null);
+    setUsername('');
+    setPassword('');
+  };
+
   const handleAddItem = async (e: React.FormEvent) => {
     e.preventDefault();
     const newItem = { name, quantity: parseInt(quantity), minThreshold: parseInt(minThreshold) };
@@ -37,7 +52,7 @@ export default function App() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Basic ' + btoa('admin:admin123')
+          'Authorization': `Basic ${auth}`
         },
         body: JSON.stringify(newItem)
       });
@@ -64,7 +79,7 @@ export default function App() {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Basic ' + btoa('admin:admin123')
+          'Authorization': `Basic ${auth}`
         },
         body: JSON.stringify({ quantity: parseInt(addAmount) })
       });
@@ -79,9 +94,31 @@ export default function App() {
     }
   };
 
+  if (!auth) {
+    return (
+        <div>
+          <h2>Login</h2>
+          <form onSubmit={handleLogin}>
+            <input
+                type="text" placeholder="Username" value={username}
+                onChange={(e) => setUsername(e.target.value)} required
+            />
+            <input
+                type="password" placeholder="Password" value={password}
+                onChange={(e) => setPassword(e.target.value)} required
+            />
+            <button type="submit">Login</button>
+          </form>
+        </div>
+    );
+  }
+
   return (
       <div>
-        <h1>Smart Pantry Dashboard</h1>
+        <div>
+          <h1>Smart Pantry Dashboard</h1>
+          <button onClick={handleLogout}>Logout</button>
+        </div>
 
         <form onSubmit={handleAddItem}>
           <h3>Add New Pantry Item</h3>
