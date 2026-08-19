@@ -1,4 +1,4 @@
-package entity;
+package com.pantry.backend.entity;
 
 public class Item {
     private InventoryItem item;

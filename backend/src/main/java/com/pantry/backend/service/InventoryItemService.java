@@ -1,11 +1,10 @@
-package Service;
+package com.pantry.backend.service;
 
-import entity.InventoryItem;
-import entity.InventoryItem;
+import com.pantry.backend.entity.InventoryItem;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
-import repository.InventoryItemRepository;
-import entity.Item;
+import com.pantry.backend.repository.InventoryItemRepository;
+import com.pantry.backend.entity.Item;
 
 import java.util.List;
 

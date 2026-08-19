@@ -1,4 +1,4 @@
-package entity;
+package com.pantry.backend.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
