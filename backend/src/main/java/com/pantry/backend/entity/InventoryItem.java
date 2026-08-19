@@ -10,18 +10,12 @@ public class InventoryItem {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Setter
-    @Getter
     @Column
     private String name;
 
-    @Setter
-    @Getter
     @Column
     private int quantity;
 
-    @Setter
-    @Getter
     @Column
     private int minThreshold;
 
@@ -40,5 +34,29 @@ public class InventoryItem {
 
     public void addQuantity(int quantity){
         this.quantity += quantity;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public int getMinThreshold() {
+        return minThreshold;
+    }
+
+    public void setMinThreshold(int minThreshold) {
+        this.minThreshold = minThreshold;
     }
 }

@@ -1,4 +1,4 @@
-package controller;
+package com.pantry.backend.controller;
 
 import com.pantry.backend.entity.InventoryItem;
 import com.pantry.backend.entity.Item;
