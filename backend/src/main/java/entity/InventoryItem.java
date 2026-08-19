@@ -34,4 +34,11 @@ public class InventoryItem {
         this.minThreshold = minThreshold;
     }
 
+    public boolean isLow(){
+        return quantity < minThreshold;
+    }
+
+    public void addQuantity(int quantity){
+        this.quantity += quantity;
+    }
 }
