@@ -7,13 +7,22 @@ public class Item {
     private String name;
     private int quantity;
     private int minThreshold;
-    private boolean isLowStock;
+    private boolean lowStock;
 
-    public Item(String name, int quantity, int minThreshold, boolean isLowStock) {
+    public Item(Long id, String name, int quantity, int minThreshold, boolean lowStock) {
+        this.id = id;
         this.name = name;
         this.quantity = quantity;
         this.minThreshold = minThreshold;
-        this.isLowStock = isLowStock;
+        this.lowStock = lowStock;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -41,10 +50,10 @@ public class Item {
     }
 
     public boolean isLowStock() {
-        return isLowStock;
+        return lowStock;
     }
 
     public void setLowStock(boolean lowStock) {
-        isLowStock = lowStock;
+        lowStock = lowStock;
     }
 }

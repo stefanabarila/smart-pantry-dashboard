@@ -17,7 +17,7 @@ public class InventoryItemService {
     }
 
     public List<Item> getAllItems(){
-        return repo.findAll().stream().map(x -> new Item(x.getName(), x.getQuantity(), x.getMinThreshold(), x.isLow())).toList();
+        return repo.findAll().stream().map(x -> new Item(x.getId(), x.getName(), x.getQuantity(), x.getMinThreshold(), x.isLow())).toList();
     }
 
     public void createItem(InventoryItem item){
