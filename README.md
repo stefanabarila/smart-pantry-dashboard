@@ -59,3 +59,14 @@ The backend uses in-memory authentication with the following configured users:
    npm run dev
  ```
 4. The frontend will start on http://localhost:5173. Open this URL in your browser to view the application.
+## Decisions & Trade-offs
+
+### Database Selection
+I opted to use the H2 in-memory database rather than PostgreSQL for this implementation. This decision was made to prioritize ease of testing and evaluation for the reviewers; it allows the application to be run instantly with zero infrastructure setup or Docker dependencies. 
+
+### Future Improvements
+With more time, I would implement these optional enhancements:
+*   **Docker Setup:** Add a `docker-compose.yml` file to easily run the app alongside a PostgreSQL database.
+*   **Input Validation:** Ensure users cannot enter negative quantities or blank item names.
+*   **Better Error Handling:** Return clean, structured error messages from the API instead of standard server stack traces.
+*   **Delete Feature:** Add a `DELETE` endpoint so administrators can remove old items from the inventory.
