@@ -43,21 +43,27 @@ The backend uses in-memory authentication with the following configured users:
 * npm (Node Package Manager)
 
 ### 1. Running the Spring Boot Backend
-1. Open the backend folder in your preferred IDE (e.g., IntelliJ IDEA).
-2. Ensure your dependencies are installed via Maven.
-3. Run the `BackendApplication.java` main class.
-4. The backend will start on `http://localhost:8080`.
+1. Open a terminal and navigate to the `backend` folder
+2. For Windows:
+  ```bash
+mvnw.cmd spring-boot:run
+```
+For Mac/Linux
+```bash
+./mvnw spring-boot:run
+```
+3. The backend will start on `http://localhost:8080`.
 
 ### 2. Running the React Frontend
 1. Open a terminal and navigate to the `frontend` folder.
 2. Install the required Node modules:
-   ```bash
-   npm install
-   ```
+```bash
+npm install
+```
 3. Start the Vite development server:
- ```bash
-   npm run dev
- ```
+```bash
+npm run dev
+```
 4. The frontend will start on http://localhost:5173. Open this URL in your browser to view the application.
 ## Decisions & Trade-offs
 
