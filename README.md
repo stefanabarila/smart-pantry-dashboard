@@ -38,7 +38,7 @@ The backend uses in-memory authentication with the following configured users:
 ## Setup and Installation
 
 ### Prerequisites
-* Java 17+
+* Java 21+
 * Node.js (v16+)
 * npm (Node Package Manager)
 
