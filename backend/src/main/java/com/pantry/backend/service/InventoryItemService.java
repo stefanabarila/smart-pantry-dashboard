@@ -17,7 +17,8 @@ public class InventoryItemService {
     }
 
     public List<Item> getAllItems(){
-        return repo.findAll().stream().map(x -> new Item(x.getId(), x.getName(), x.getQuantity(), x.getMinThreshold(), x.isLow())).toList();
+        return repo.findAll().stream().map(x ->
+                new Item(x.getId(), x.getName(), x.getQuantity(), x.getMinThreshold(), x.isLow())).toList();
     }
 
     public void createItem(InventoryItem item){
@@ -29,6 +30,7 @@ public class InventoryItemService {
         if (repo.existsById(id)) {
             InventoryItem item = repo.findById(id).orElseThrow();
             item.addQuantity(quantity);
+            // @Transactional automatically handles persisting the updated entity state to the database.
         }
     }
 }

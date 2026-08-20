@@ -54,6 +54,6 @@ public class Item {
     }
 
     public void setLowStock(boolean lowStock) {
-        lowStock = lowStock;
+        this.lowStock = lowStock;
     }
 }

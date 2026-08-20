@@ -15,6 +15,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
+        // Disabling CSRF because this is a simple, stateless API relying on Basic Authentication.
         http.cors(Customizer.withDefaults())
                 .csrf(csrf -> csrf.disable()).authorizeHttpRequests(auth -> {
                     auth.requestMatchers(HttpMethod.GET, "/api/items").permitAll()

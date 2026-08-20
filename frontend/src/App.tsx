@@ -35,6 +35,7 @@ export default function App() {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     if (username === 'admin' && password === 'admin123') {
+      // btoa() encodes the credentials into Base64 format, which is the standard required for HTTP Basic Auth headers.
       setAuth(btoa(`${username}:${password}`));
     }
     else if (username === 'user' && password === 'user123') {
@@ -134,6 +135,7 @@ export default function App() {
         <tbody>
         {items.map((item) => (
             <tr key={item.id} style={{ backgroundColor: item.lowStock ? '#8B0000' : 'transparent' }}>
+              {/* Dynamically highlights the row in dark red if the item's quantity falls below the minimum threshold */}
               <td>{item.name}</td>
               <td>{item.quantity}</td>
               <td>{item.minThreshold}</td>
@@ -159,6 +161,7 @@ export default function App() {
           <h1>Smart Pantry Dashboard</h1>
           <button onClick={handleLogout}>Logout</button>
         </div>
+        {/* Renders the Add Item form only if the logged-in user has Admin role */}
         {auth && username === 'admin' &&
         <form onSubmit={handleAddItem}>
           <h3>Add New Pantry Item</h3>
@@ -186,6 +189,7 @@ export default function App() {
             <th>Quantity</th>
             <th>Min Threshold</th>
             <th>Status</th>
+            {/* Renders the Actions column only if the logged-in user has Admin role */}
             {auth && username === 'admin' && <th>Actions</th>}
           </tr>
           </thead>
@@ -199,6 +203,7 @@ export default function App() {
                   {item.lowStock ? 'Low Stock' : 'In Stock'}
                 </td>
                 <td>
+                  {/* Renders the restock button only if the logged-in user has Admin role */}
                   {auth && username === 'admin' && <button
                       onClick={() => handleRestock(item.id)}>
                     Restock

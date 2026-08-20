@@ -28,10 +28,18 @@ public class InventoryItem {
         this.minThreshold = minThreshold;
     }
 
+    /**
+     * Verifies if the stock is low
+     * @return true only when the quantity is strictly less than the minThreshold
+     */
     public boolean isLow(){
         return quantity < minThreshold;
     }
 
+    /**
+     * Adds a quantity to the item
+     * @param quantity the quantity to be added
+     */
     public void addQuantity(int quantity){
         this.quantity += quantity;
     }
